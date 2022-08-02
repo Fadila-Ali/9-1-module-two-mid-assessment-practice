@@ -41,7 +41,11 @@ const characters = require('./swapi');
  *
  */
 
-function listAllCharacters() {}
+function listAllCharacters(characters) {
+  if (!characters.length) throw "The characters array cannot be empty."
+  const charactersName = characters.map(({name}) => name, []);
+  return charactersName;
+}
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
 // console.log(listAllCharacters([]));
@@ -61,10 +65,18 @@ function listAllCharacters() {}
  * No example for this one. You should be able to find the average at this point
  */
 
-function averageHeightOfAllCharacters() {}
+function averageHeightOfAllCharacters(characters) {
+  let avg = 0;
+  let count = 0;
+  characters.forEach(({height}) => {
+    avg += Number(height);
+    count++;
+  });
+  return avg / count;
+}
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
-//console.log(averageHeightOfAllCharacters(characters))
+// console.log(averageHeightOfAllCharacters(characters))
 
 //*************************************************************************************************/
 
@@ -98,7 +110,10 @@ function averageHeightOfAllCharacters() {}
  *
  */
 
-function checkForEyeColor() {}
+function checkForEyeColor(characters, eyes) {
+  if (!characters.length) throw "The characters array cannot be empty.";
+  return characters.some(({eye_color}) => eye_color === eyes) ? true : false;
+}
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
 // console.log(checkForEyeColor([]));
